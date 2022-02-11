@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 03:17:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/11 05:09:41 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct p_data
 {
 	int				err;
+	char			**env;
 	struct p_token	*first;
 }				t_data;
 
@@ -67,7 +68,7 @@ int	ft_strlen(char *str);
 
 
 /*	*************	*/
-/*		UTILS		*/
+/*		INIT		*/
 /*	*************	*/
 
 /*	ft_token.c	*/
@@ -75,6 +76,18 @@ void	ft_init_token(t_data *data); // initialise la liste
 void	ft_add_new_token(t_data *data); // cree une nouvelle liste et la met au debut de la stack
 void	ft_free_token(t_data *data, t_token *token); // free les mallocs dans une liste
 void	ft_delete_token(t_data *data, t_token *delete); // supprime la tokene en relian si besoin les autres
+
+/*	ft_env.c	*/
+int	ft_init_env(t_data *data, char **env); // malloc env dans data
+int	ft_init_env_bis(t_data *data, char **env, int i);
+
+/*	*************	*/
+/*		UTILS		*/
+/*	*************	*/
+
+/*	ft_write.c	*/
+void	ft_putstr(char *str);
+void	ft_putchar(char *c);
 
 
 #endif
