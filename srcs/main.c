@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 05:23:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/11 16:13:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **env)
 {
 	argc = 0;
 	argv = NULL;
-	char *line;
+	// char *line;
 	t_data	*data;
 
 	int i = 0; // A SUPP
@@ -29,17 +29,17 @@ int	main(int argc, char **argv, char **env)
 	
 	/*		Tests		*/
 	write(0, "~$ ", 3);
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(0, &data->input) > 0)
 	{
-		ft_putstr(line);
+		ft_putstr(data->input);
 		write(0, "~$ ", 3);
 	}
-	printf("\n");
-	while (data->env[i])
-	{
-		printf("%s\n", data->env[i]);
-		i++;
-	}
+	// printf("\n");
+	// while (data->env[i])
+	// {
+	// 	printf("%s\n", data->env[i]);
+	// 	i++;
+	// }
 	/*		Tests		*/
 
 	return (0);

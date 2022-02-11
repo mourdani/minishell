@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 05:09:41 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/11 17:24:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 
 typedef struct p_data
 {
-	int				err;
-	char			**env;
-	struct p_token	*first;
+	int				err; // 
+	char			**env; // argument env
+	char			*input; // chaine de caractere recu brute dans le shell
+	struct p_token	*first; // adresse du premier token
 }				t_data;
 
 /*	**************	*/
@@ -88,6 +89,14 @@ int	ft_init_env_bis(t_data *data, char **env, int i);
 /*	ft_write.c	*/
 void	ft_putstr(char *str);
 void	ft_putchar(char *c);
+int		ft_is_a_b(char a, char b); // compare a et b, renvoie 1 si ils sont identiques sinon 0
+int		ft_space(char *str, int i); // renvoie le nombre d espaces a sauter en partant de i
+
+/*	**************	*/
+/*		PARSING		*/
+/*	**************	*/
+
+/*	ft_cut_echo.c	*/
 
 
 #endif
