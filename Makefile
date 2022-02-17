@@ -1,44 +1,55 @@
-NAME_LIB = minishell.a
+## Executables name
+NAME		= minishell
 
-NAME = minishell
+## Sources
+SRC	= src/main.c
 
-CC = gcc
+## Objects (patsubst = path substitute)
+OBJ	= ${patsubst src/%, obj/%, $(SRC:.c=.o)}
 
-CFLAGS = -Wall -Wextra -Werror
+## LIBFT config
+LIBFT		= $(LIBFT_DIR)libft.a
+LIBFT_DIR	= ./src/libft/
+LIB_FLAGS	= -L $(LIBFT_DIR) -lft
+INC		= -I ./inc/ -I $(LIBFT_DIR)
 
-GNL_C = srcs/gnl/get_next_line.c\
-			srcs/gnl/get_next_line_bis.c\
-			srcs/gnl/get_next_line_utils.c\
+## Compiling config
+CC		= gcc
+RM		= rm -rf
+CFLAGS		= -Wall -Werror -Wextra
 
-INIT_C = srcs/init/ft_token.c\
-			srcs/init/ft_env.c\
+## Output messages
+DONE = @echo "libft compiled successfully!"
+CLEAN_O = @echo "Object files removed!"
+CLEAN_A = @echo "Executables removed!"
+DONE = @echo "MINISHELL ready to use!"
 
-UTILS_C = srcs/utils/ft_write.c\
-
-MAIN_C = srcs/main.c\
-
-OBJS = get_next_line.o\
-			get_next_line_bis.o\
-			get_next_line_utils.o\
-			ft_token.o\
-			ft_env.o\
-			ft_write.o\
+all:	obj $(NAME)
 
 
-all : $(NAME)
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
+	$(DONE)
 
-$(NAME) :
-	@$(CC) $(CFLAGS) $(GNL_C) $(INIT_C) $(UTILS_C) -c
-	@ar -rc $(NAME_LIB) $(OBJS)
-	@ranlib $(NAME_LIB)
-	@$(CC) $(CFLAGS) $(MAIN_C) $(NAME_LIB) -o $(NAME)
+$(LIBFT):
+	@make -sC $(LIBFT_DIR)
 
-clean :
-	@rm -rf $(OBJS)
+obj:
+	@mkdir -p obj
 
-fclean : clean
-	@rm -rf $(NAME)
-	@rm -rf $(NAME_LIB)
+obj/%.o: src/%.c
+	@$(CC) $(FLAGS) -o $@ -c $<
 
-re : fclean all
-	@rm -rf $(OBJS)
+clean:
+	@make clean -sC $(LIBFT_DIR)
+	@${RM} obj ${OBJ}
+	$(CLEAN_O)
+
+fclean:	clean
+	@make fclean -sC $(LIBFT_DIR)
+	@${RM} ${NAME}
+	$(CLEAN_A)
+
+re: fclean all
+
+.PHONY:	all clean fclean re obj

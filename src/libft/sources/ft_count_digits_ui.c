@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bis.c                                :+:      :+:    :+:   */
+/*   ft_count_digits_ui.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:00:36 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/09 19:57:12 by guderram         ###   ########.fr       */
+/*   Created: 2022/02/10 05:25:45 by mourdani          #+#    #+#             */
+/*   Updated: 2022/02/10 05:25:48 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <libft.h>
 
-int	ft_exerror(char **str, int error)
+unsigned int	ft_count_digits_ui(unsigned int number)
 {
-	ft_strdel(&*str);
-	if (error == 1)
-		return (-1);
-	return (0);
-}
+	int	digit_count;
 
-void	ft_strdel(char **as)
-{
-	if (as != NULL)
+	digit_count = 1;
+	while (number)
 	{
-		free(*as);
-		*as = NULL;
+		number /= 10;
+		digit_count++;
 	}
+	return (digit_count);
 }
