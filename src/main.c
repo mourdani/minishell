@@ -6,21 +6,35 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 07:08:32 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:09:31 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../inc/minishell.h"
 
-int	history_fill(char *str, int param)
+int	add_history(char *str, int param)
 {
-	static char *history;
+	static int	i;
+	static char **history;
+	int j;
 
+	if (!history)
+	{
+		i = 0;
+		history = malloc(sizeof(char **));
+	}
 	if (param == 1)
-		history = ft_strjoin(str, history);
-	if (param == 2)
-		printf("\n\n\nhistory : %s\n", history);
+		history[i++] = ft_strdup(str);
+	else
+	{
+		j = 0;
+		while (j < i)
+		{
+			printf("%d   %s\n", j,  history[j]);
+			j++;
+		}
+	}
 	return (0);
 }
 
@@ -42,8 +56,13 @@ int	main(int argc, char **argv, char **env)
 	write(0, "~$ ", 3);
 	while (get_next_line(0, &data->input) > 0)
 	{
-		printf("text entered: %s\n", data->input);
-		history_fill(data->input, 1);
+		if (data->input[0] == 'h' && data->input[1] == 'i')
+			add_history(data->input, 2);
+		else
+		{
+			printf("text entered: %s\n", data->input);
+			add_history(data->input, 1);
+		}
 		write(0, "~$ ", 3);
 	}
 	// printf("\n");
