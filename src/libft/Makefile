@@ -80,7 +80,9 @@ SOURCE_FILES = unless.c ft_salloc.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 	\
-	get_next_line.c 
+	get_next_line.c \
+	\
+	ft_is_a_b.c \
 
 SOURCES = $(addprefix $(SOURCES_PATH)/,$(SOURCE_FILES))
 

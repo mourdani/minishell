@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 07:41:30 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:48:25 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h> // WRITE
 # include <stdio.h> // PRINTF
 # include <stdlib.h> // MALLOC FREE
+#include <dirent.h> // opendir() for "cd"
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
@@ -73,6 +74,13 @@ int		ft_space(char *str, int i); // renvoie le nombre d espaces a sauter en part
 /*	**************	*/
 
 /*	ft_cut_echo.c	*/
-
+int		cut_history(t_data *data);
+int		cut_exit(t_data *data);
+int		cut_env(t_data *data);
+int		cut_pwd(t_data *data);
+int		cut_cd(t_data *data);
+int		add_history(char *str, int param);
+int		print_wd(void);
+int		print_cd(char *path);
 
 #endif

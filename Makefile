@@ -2,7 +2,13 @@
 NAME		= minishell
 
 ## Sources
-SRC	= src/main.c
+SRC	= 	src/main.c \
+		src/parsing/history.c \
+		src/parsing/exit.c \
+		src/parsing/pwd.c \
+		src/parsing/cd.c \
+		src/parsing/env.c
+		
 
 ## Objects (patsubst = path substitute)
 OBJ	= ${patsubst src/%, obj/%, $(SRC:.c=.o)}
@@ -36,9 +42,10 @@ $(LIBFT):
 
 obj:
 	@mkdir -p obj
+	@mkdir -p obj/parsing
 
 obj/%.o: src/%.c
-	@$(CC) $(FLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@make clean -sC $(LIBFT_DIR)
