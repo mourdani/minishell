@@ -4,11 +4,23 @@ NAME		= minishell
 ## Sources
 SRC	= 	src/main.c \
 		src/parsing/history.c \
-		src/parsing/exit.c \
-		src/parsing/pwd.c \
+		src/parsing/cut_exit.c \
+		src/parsing/ft_exit.c \
 		src/parsing/cd.c \
-		src/parsing/env.c
-		
+		src/parsing/env.c \
+		src/parsing/ft_cut_pwd.c \
+		src/parsing/ft_cut_input.c \
+		src/parsing/ft_cut_export.c \
+		src/init/ft_token.c \
+		src/init/ft_env.c \
+		src/cmd/ft_read_token_list.c \
+		src/cmd/ft_echo.c \
+		src/cmd/ft_pwd.c \
+		src/utils/ft_write.c \
+		src/utils/ft_str.c
+#		src/parsing/ft_cut_echo.c \
+#		src/parsing/ft_cut_str.c \
+
 
 ## Objects (patsubst = path substitute)
 OBJ	= ${patsubst src/%, obj/%, $(SRC:.c=.o)}
@@ -43,6 +55,9 @@ $(LIBFT):
 obj:
 	@mkdir -p obj
 	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/cmd
+	@mkdir -p obj/utils
 
 obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<

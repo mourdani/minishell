@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 05:07:01 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 16:42:35 by guderram         ###   ########.fr       */
+/*   Created: 2022/02/17 19:54:31 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/17 19:58:26 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_is_a_b(char a, char b) // compare a et b, renvoie 1 si ils sont identiques sinon 0
+void	ft_clear_token_list(t_data *data) // supprime tout les tokens de la liste
 {
-	if (a == b)
-		return (1);
-	else
-		return (0);
+	while (data->first != NULL)
+	{
+		ft_delete_token(data, data->first);
+	}
 }
 
-int	ft_space(char *str, int i) // renvoie le nombre d espaces a sauter en partant de i
+void	ft_clear_for_new_input(t_data *data) // reset la structure data pour reprendre un nouveau input
 {
-	int	u;
-
-	u = 0;
-	while (str[i + u] && str[i + u] == ' ')
-	{
-		u++;
-	}
-	return (u);
+	ft_clear_token_list(data);
+	data->i = 0;
 }

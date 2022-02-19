@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../inc/minishell.h"
 
 int	ft_init_env_bis(t_data *data, char **env, int i)
 {
@@ -35,10 +35,10 @@ int	ft_init_env_bis(t_data *data, char **env, int i)
 int	ft_init_env(t_data *data, char **env) // malloc env dans data
 {
 	int	i;
-	int	u;
+//	int	u;
 
 	i = 0;
-	u = 0;
+//	u = 0;
 	while (env[i])
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
@@ -51,6 +51,10 @@ int	ft_init_env(t_data *data, char **env) // malloc env dans data
 			return (0); // erreur malloc
 		i++;
 	}
+	data->i = 0;
+	data->exit = 0;
+	data->err = 0;
+	data->first = NULL;
 	data->env[i] = NULL;
 	return (1); // 1 = OK
 }

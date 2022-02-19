@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../inc/minishell.h"
 
 int	ft_strcmp_space(char *str, char *cmp)
 {

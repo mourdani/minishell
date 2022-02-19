@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 05:07:01 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 16:42:35 by guderram         ###   ########.fr       */
+/*   Created: 2022/02/10 17:35:31 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/18 07:51:18 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
-int	ft_is_a_b(char a, char b) // compare a et b, renvoie 1 si ils sont identiques sinon 0
+void	ft_echo(t_data *data, t_token *token) // commande echo
 {
-	if (a == b)
-		return (1);
-	else
-		return (0);
-}
-
-int	ft_space(char *str, int i) // renvoie le nombre d espaces a sauter en partant de i
-{
-	int	u;
-
-	u = 0;
-	while (str[i + u] && str[i + u] == ' ')
-	{
-		u++;
-	}
-	return (u);
+	/*	sortie sur l'entree standard	*/
+	ft_putstr(token->str);
+	if (token->option != 1)
+		ft_putstr("\n");
+	data->i = data->i;
+	// ft_delete_token(data, token); // SEG FAULT
 }

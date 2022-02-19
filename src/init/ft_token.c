@@ -10,23 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../inc/minishell.h"
 
 void	ft_init_token(t_data *data) // initialise la liste
 {
 	t_token	*token;
-	
+
 	token = malloc(sizeof(t_token));
 	if(token == NULL)
 		data->err = 101; // erreur 101 = malloc
 	else
 	{
+		token->sep = -1; // valeur initiale vide
 		token->cmd = -1; // valeur initiale vide
 		token->option = -1; // valeur initiale vide
 		token->str = NULL; // valeur initiale vide
 		token->next = NULL; // dernier token donc addresse suivante nulle
 		token->prev = NULL; // premier token donc addresse precedente nulle
-	}	
+	}
+	data->first = token;
 }
 
 void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debut de la stack
@@ -50,13 +52,18 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 
 void	ft_free_token(t_data *data, t_token *token) // free les mallocs dans une liste
 {
-	if (token->str != NULL)
+	if (token->cmd != 2 && token->str != NULL)
 	{
 		free (token->str);
 		token->str = NULL;
 	}
 	else
-		data->err = 103; // free d'un str deja free
+	{
+		if (token->cmd != 2)
+			data->err = 103; // free d'un str deja free
+		else
+			token->str = NULL;
+	}
 }
 
 void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en relian si besoin les autres
