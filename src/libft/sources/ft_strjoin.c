@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:28:46 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/10 05:28:47 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/23 10:19:41 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s1_size;
 	char	*new_string;
 
+	if (!s1)
+		return ((char*)s2);
 	s1_size = ft_strlen(s1) + 1;
 	total_size = s1_size + ft_strlen(s2);
 	new_string = malloc(total_size * sizeof(char));

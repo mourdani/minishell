@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:36:34 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/18 05:58:17 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:27:02 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
+char				*ft_straddc(char *s, char c);
 size_t				ft_strlen(const char *s);
 char				*ft_strcpy(char *dest, char *src);
 void				ft_strdel(char **delete_me);

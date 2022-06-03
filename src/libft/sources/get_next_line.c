@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 05:26:27 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/17 05:32:56 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:40:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
+#include "../../../inc/minishell.h"
 
 /*
 ** This function appends a single line into our line variable. We do this by
@@ -83,7 +84,7 @@ static int	output(char **s, char **line, int ret, int fd)
 ** should be returned.
 */
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	int			ret;
 	static char	*s[FD_SIZE];
@@ -92,8 +93,10 @@ int			get_next_line(const int fd, char **line)
 
 	if (fd < 0 || line == NULL)
 		return (-1);
-	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	ret = 1;
+	while (ret > 0)
 	{
+		ret = read(fd, buff, BUFF_SIZE);
 		buff[ret] = '\0';
 		if (s[fd] == NULL)
 			s[fd] = ft_strdup(buff);

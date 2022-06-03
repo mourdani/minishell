@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:28:42 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/10 05:28:43 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/23 10:08:26 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ char	*ft_strjoin_and_free(char *free_me, char const *dont_free_me)
 	new_string = malloc(total_size * sizeof(char));
 	if (new_string == NULL)
 	{
-		free(free_me);
+		if (free_me)
+			free(free_me);
 		return (NULL);
 	}
 	ft_strcpy(new_string, free_me);
 	ft_strlcat(new_string, dont_free_me, total_size);
-	free(free_me);
+	if (free_me)
+		free(free_me);
 	return (new_string);
 }
