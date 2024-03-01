@@ -19,21 +19,35 @@
 </p>
 <hr>
 
+##  Overview
+
 This project involves the development of a simple shell, providing users with the ability to execute executables from different paths and handle arguments and options similar to the bash shell environment.
 Project Description
 Minishell is a software project that challenges students to rewrite a basic shell, offering functionalities akin to popular shells like bash. By working on this project, students gain hands-on experience in shell scripting and command-line interface development.
-Features
+
+---
+
+## Features
 
     Execution of executables from absolute, relative, or environment PATH
     Handling of arguments and options
     Support for single and double quotes similar to bash
 
-Installation
+---
+
+## Installation
 
     Clone the repository: git clone <repository-url>
     Compile the project: make
 
-Usage
+---
+
+## Usage
 
     Start the Minishell: ./minishell
     Enter commands and explore shell functionalities
+
+---
+
+## Contributors
+- @kscarmy
